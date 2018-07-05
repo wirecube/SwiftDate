@@ -147,8 +147,9 @@ public class DateInRegionFormatter {
 			if willDrop == false {
 				var cmp = DateComponents()
 				cmp.setValue(abs(value!), for: component)
-				let localizedUnit = DateComponentsFormatter.localizedString(from: cmp, unitsStyle: unitStyle)!
-				output.append(localizedUnit)
+                if let localizedUnit = DateComponentsFormatter.localizedString(from: cmp, unitsStyle: unitStyle) {
+                    output.append(localizedUnit)
+                }
 			}
 			
 			nonZeroUnitFound += (isValueZero == false ? 1 : 0)
